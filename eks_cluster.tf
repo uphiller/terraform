@@ -1,7 +1,3 @@
-provider "aws" {
-  region     = "ap-northeast-2"
-}
-
 data "terraform_remote_state" "vpc" {
   backend = "local"
 
