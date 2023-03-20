@@ -1,6 +1,5 @@
 resource "aws_eks_cluster" "shop" {
   name    = "shop"
-  role_arn = "arn:aws:iam::193945198166:role/EKS"
 
   vpc_config {
     subnet_ids = [aws_subnet.first.id, aws_subnet.second.id]
