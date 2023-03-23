@@ -11,6 +11,7 @@ resource "aws_iam_role" "eks_cluster_role" {
             "Principal": {
                 "Service": [
                     "eks.amazonaws.com"
+                    "ec2.amazonaws.com"
                 ]
             },
             "Action": "sts:AssumeRole"
