@@ -19,6 +19,10 @@ resource "aws_iam_role" "eks_cluster_role" {
     ]
 })
 
-managed_policy_arns = ["arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"]
+managed_policy_arns = [
+"arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+"arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+"arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+]
 
 }
