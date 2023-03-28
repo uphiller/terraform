@@ -1,6 +1,6 @@
-resource "aws_network_interface" "ni" {
-  subnet_id   = aws_subnet.first.id
-}
+#resource "aws_network_interface" "ni" {
+#  subnet_id   = aws_subnet.first.id
+#}
 
 resource "aws_security_group" "allow_all" {
   name        = "allow_all"
@@ -30,11 +30,12 @@ resource "aws_instance" "web" {
   ami           = "ami-03221589fd7c8f183"
   instance_type = "t2.micro"
 
-  network_interface {
-    network_interface_id = aws_network_interface.ni.id
-    device_index         = 0
-    vpc_security_group_ids = [aws_security_group.allow_all.id]
-  }
+#  network_interface {
+#    network_interface_id = aws_network_interface.ni.id
+#    device_index         = 0
+#  }
+  subnet_id = aws_subnet.first.id
+  vpc_security_group_ids = [aws_security_group.allow_all.id]
 
   key_name = "aws-go"
 
