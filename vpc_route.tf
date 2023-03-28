@@ -7,8 +7,10 @@
 #  }
 #}
 
-resource "aws_route" "route" {
+resource "aws_route_table" "route" {
   route_table_id            = aws_vpc.backend.default_route_table_id
-  cidr_block    = "0.0.0.0/0"
-  gateway_id = aws_internet_gateway.main.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.main.id
+  }
 }
