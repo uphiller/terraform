@@ -1,5 +1,5 @@
-resource "aws_network_interface" "ni" {
-  subnet_id   = aws_subnet.first.id
+#resource "aws_network_interface" "ni" {
+#  subnet_id   = aws_subnet.first.id
 #}
 #
 #resource "aws_security_group" "allow_all" {
