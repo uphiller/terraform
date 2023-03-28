@@ -4,5 +4,5 @@ resource "aws_vpc" "backend" {
 
 output "default_route_table_id" {
   description = "The ID of the default route table"
-  value       = try(aws_vpc.backend[0].default_route_table_id, "")
+  value       = try(aws_vpc.backend.default_route_table_id, "")
 }
