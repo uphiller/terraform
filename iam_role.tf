@@ -44,7 +44,8 @@ resource "aws_iam_role" "eks_node_role" {
           "ec2:DescribeInstanceTypes",
           "ec2:DetachNetworkInterface",
           "ec2:ModifyNetworkInterfaceAttribute",
-          "ec2:UnassignPrivateIpAddresses"
+          "ec2:UnassignPrivateIpAddresses",
+          "sts:AssumeRole"
         ],
         "Resource": "*"
       },
@@ -61,7 +62,6 @@ resource "aws_iam_role" "eks_node_role" {
   })
 
   managed_policy_arns = [
-    "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
     "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
     "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   ]
