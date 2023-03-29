@@ -33,6 +33,11 @@ resource "aws_iam_role" "eks_node_role" {
     "Statement": [
       {
         "Effect": "Allow",
+        "Principal": {
+          "Service": [
+            "ec2.amazonaws.com"
+          ]
+        },
         "Action": [
           "ec2:AssignPrivateIpAddresses",
           "ec2:AttachNetworkInterface",
@@ -44,19 +49,8 @@ resource "aws_iam_role" "eks_node_role" {
           "ec2:DescribeInstanceTypes",
           "ec2:DetachNetworkInterface",
           "ec2:ModifyNetworkInterfaceAttribute",
-          "ec2:UnassignPrivateIpAddresses",
-          "sts:AssumeRole"
+          "ec2:UnassignPrivateIpAddresses"
         ],
-        "Resource": "*"
-      },
-      {
-        "Effect": "Allow",
-        "Action": [
-          "ec2:CreateTags"
-        ],
-        "Resource": [
-          "arn:aws:ec2:*:*:network-interface/*"
-        ]
       }
     ]
   })
