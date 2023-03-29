@@ -35,27 +35,17 @@ resource "aws_iam_role" "eks_node_role" {
         "Effect": "Allow",
         "Principal": {
           "Service": [
+            "eks.amazonaws.com",
             "ec2.amazonaws.com"
           ]
         },
-        "Action": [
-          "ec2:AssignPrivateIpAddresses",
-          "ec2:AttachNetworkInterface",
-          "ec2:CreateNetworkInterface",
-          "ec2:DeleteNetworkInterface",
-          "ec2:DescribeInstances",
-          "ec2:DescribeTags",
-          "ec2:DescribeNetworkInterfaces",
-          "ec2:DescribeInstanceTypes",
-          "ec2:DetachNetworkInterface",
-          "ec2:ModifyNetworkInterfaceAttribute",
-          "ec2:UnassignPrivateIpAddresses"
-        ],
+        "Action": "sts:AssumeRole"
       }
     ]
   })
 
   managed_policy_arns = [
+    "arn:aws:iam::aws:policy/AmazonEC2FullAccess",
     "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
     "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   ]
